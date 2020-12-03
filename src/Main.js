@@ -7,10 +7,10 @@ import {
   Text,
   View,
   StyleSheet,
+  StatusBar,
 } from 'react-native';
 
-
-const { width, height } = Dimensions.get('screen');
+const {width, height} = Dimensions.get('screen');
 const ITEM_WIDTH = width * 0.76;
 const ITEM_HEIGHT = ITEM_WIDTH * 1.47;
 
@@ -31,25 +31,52 @@ const data = images.map((image, index) => ({
   key: String(index),
   photo: image,
   avatar_url: `https://randomuser.me/api/portraits/women/${Math.floor(
-    Math.random() * 40
+    Math.random() * 40,
   )}.jpg`,
 }));
-
 
 const Main = () => {
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-      <Text style={{fontSize: 114}}>❤️</Text>
-      <Text
-        style={{
-          marginTop: 10,
-          fontWeight: '800',
-          fontSize: 32,
-        }}>
-        Main
-      </Text>
-      <Text style={{fontStyle: 'italic', fontSize: 18}}>Main</Text>
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item.key}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        pagingEnabled
+        renderItem={({item, index}) => {
+          return (
+            <View
+              style={{width, justifyContent: 'center', alignItems: 'center'}}>
+              <View
+                style={{
+                  width:ITEM_WIDTH,
+                  height:ITEM_HEIGHT,
+                  overflow:"hidden"
+                }}
+              >
+                <Image
+                  style={{
+                    width: ITEM_WIDTH,
+                    height: ITEM_HEIGHT,
+                    resizeMode: 'cover',
+                  }}
+                  source={{uri: item.photo}}
+                />
+              </View>
+              <Image
+                style={{
+                  width: 60,
+                  height: 60,
+                  borderRadius: 60,
+                }}
+                source={{uri: item.avatar_url}}
+              />
+            </View>
+          );
+        }}
+      />
     </View>
   );
 };
