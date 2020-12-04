@@ -51,7 +51,15 @@ const Main = () => {
           {useNativeDriver:true}
         )}
         renderItem={({item, index}) => {
-          
+          const inputRange=[
+            (index-1)*width,
+            index*width,
+            (index+1)*width,
+          ];
+          const translateX=scrollX.interpolate({
+            inputRange,
+            outputRange:[-width*.7,0,width*.7]
+          })
           return (
             <View
               style={{width, justifyContent: 'center', alignItems: 'center'}}>
