@@ -1,0 +1,10 @@
+<h1 align="center">A Parallax Animation</h1>
+
+## Overview
+
+<img src="src/assets/animated.gif" height="500">
+
+### Built With
+
+- [React-native](https://reactnative.dev/)
+## How To Use
