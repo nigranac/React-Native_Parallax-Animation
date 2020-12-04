@@ -58,7 +58,7 @@ const Main = () => {
           ];
           const translateX=scrollX.interpolate({
             inputRange,
-            outputRange:[-width*.7,0,width*.7]
+            outputRange:[-width*.5,0,width*.5]
           })
           return (
             <View
@@ -76,9 +76,9 @@ const Main = () => {
                     height: 0,
                   },
                   padding: 12,
-                  backgroundColor: 'gray',
+                  backgroundColor: 'white',
                 }}>
-                <View
+                <Animated.View
                   style={{
                     width: ITEM_WIDTH,
                     height: ITEM_HEIGHT,
@@ -103,14 +103,14 @@ const Main = () => {
                     }}
                     source={{uri: item.photo}}
                   />
-                </View>
+                </Animated.View>
                 <Image
                   style={{
                     width: 60,
                     height: 60,
                     borderRadius: 60,
                     borderWidth: 6,
-                    borderColor: 'green',
+                    borderColor: '#64b5f6',
                     position: 'absolute',
                     bottom: -30,
                     right: 60,
@@ -131,7 +131,7 @@ export default Main;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffc4ff',
     alignItems: 'center',
     justifyContent: 'center',
   },
