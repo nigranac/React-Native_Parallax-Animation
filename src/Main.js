@@ -46,7 +46,10 @@ const Main = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
-
+        onScroll={Animated.event(
+          [{nativeEvent:{contentOffset:{x:scrollX}}}],
+          {useNativeDriver:true}
+        )}
         renderItem={({item, index}) => {
           
           return (
