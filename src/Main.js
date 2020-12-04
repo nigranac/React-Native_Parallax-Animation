@@ -36,43 +36,72 @@ const data = images.map((image, index) => ({
 }));
 
 const Main = () => {
+  const scrollX=React.useRef(new Animated.Value(0)).current;
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-      <FlatList
+      <Animated.FlatList
         data={data}
         keyExtractor={(item) => item.key}
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
+
         renderItem={({item, index}) => {
+          
           return (
             <View
               style={{width, justifyContent: 'center', alignItems: 'center'}}>
               <View
                 style={{
-                  width:ITEM_WIDTH,
-                  height:ITEM_HEIGHT,
-                  overflow:"hidden"
-                }}
-              >
-                <Image
+                  borderWidth: 10,
+                  borderColor: 'white',
+                  borderRadius: 18,
+                  shadowColor: '#000',
+                  shadowOpacity: 0.5,
+                  shadowRadius: 30,
+                  shadowOffset: {
+                    width: 0,
+                    height: 0,
+                  },
+                  padding: 12,
+                  backgroundColor: 'gray',
+                }}>
+                <View
                   style={{
                     width: ITEM_WIDTH,
                     height: ITEM_HEIGHT,
-                    resizeMode: 'cover',
+                    overflow: 'hidden',
+                    alignItems: 'center',
+                    borderRadius: 14,
+                  }}>
+                  <Animated.Image
+                    style={{
+                      width: ITEM_WIDTH * 1,
+                      height: ITEM_HEIGHT,
+                      resizeMode: 'cover',
+                      overflow: 'hidden',
+                      alignItems: 'center',
+                      borderRadius: 18,
+                      
+                    }}
+                    source={{uri: item.photo}}
+                  />
+                </View>
+                <Image
+                  style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 60,
+                    borderWidth: 6,
+                    borderColor: 'green',
+                    position: 'absolute',
+                    bottom: -30,
+                    right: 60,
                   }}
-                  source={{uri: item.photo}}
+                  source={{uri: item.avatar_url}}
                 />
               </View>
-              <Image
-                style={{
-                  width: 60,
-                  height: 60,
-                  borderRadius: 60,
-                }}
-                source={{uri: item.avatar_url}}
-              />
             </View>
           );
         }}
