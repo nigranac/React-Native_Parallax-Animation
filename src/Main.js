@@ -94,6 +94,11 @@ const Main = () => {
                       overflow: 'hidden',
                       alignItems: 'center',
                       borderRadius: 18,
+                      transform:[
+                        {
+                          translateX
+                        }
+                      ]
                       
                     }}
                     source={{uri: item.photo}}
